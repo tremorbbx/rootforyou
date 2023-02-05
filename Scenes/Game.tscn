@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Artwork/kermieidle1.png" type="Texture" id=2]
@@ -21,6 +21,27 @@
 [ext_resource path="res://Assets/Artwork/redtile2.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Artwork/greentile1.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Artwork/greentile2.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Artwork/wand2.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Artwork/wand1.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Artwork/wand3.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Artwork/wand4.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Artwork/wand5.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Artwork/wand13.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Artwork/wand6.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Artwork/wand9.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Artwork/wand11.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Artwork/wand7.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Artwork/wand8.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Artwork/wand10.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Artwork/wand12.png" type="Texture" id=34]
+[ext_resource path="res://Scripts/combat.gd" type="Script" id=35]
+[ext_resource path="res://Assets/Artwork/heavyattack.png" type="Texture" id=36]
+
+[sub_resource type="ConvexPolygonShape2D" id=37]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=38]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=12]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -98,9 +119,22 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 16/navigation_offset = Vector2( 0, 0 )
 16/shape_offset = Vector2( 0, 0 )
 16/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+16/shape = SubResource( 37 )
 16/shape_one_way = false
-16/shape_one_way_margin = 0.0
-16/shapes = [  ]
+16/shape_one_way_margin = 1.0
+16/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 37 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 38 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 16/z_index = 0
 17/name = "cavewall.png 17"
 17/texture = ExtResource( 13 )
@@ -402,6 +436,17 @@ bg_color = Color( 1, 0, 0, 1 )
 ProgressBar/styles/bg = SubResource( 17 )
 ProgressBar/styles/fg = SubResource( 18 )
 
+[sub_resource type="SpriteFrames" id=36]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 22 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 28 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 29 ), ExtResource( 33 ), ExtResource( 33 ), ExtResource( 30 ), ExtResource( 34 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "attack",
+"speed": 16.0
+} ]
+
+[sub_resource type="CircleShape2D" id=39]
+radius = 250.0
+
 [sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 16, 23.5 )
 
@@ -480,6 +525,115 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=35]
 extents = Vector2( 24, 4 )
 
+[sub_resource type="AtlasTexture" id=40]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=45]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=46]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 384, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=47]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 448, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=48]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 512, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=49]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 576, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=50]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 640, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=51]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 704, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=52]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 768, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=53]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 832, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=54]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 896, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=55]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 960, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=56]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 1024, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=57]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 1088, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=58]
+flags = 4
+atlas = ExtResource( 36 )
+region = Rect2( 1152, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=59]
+animations = [ {
+"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ) ],
+"loop": true,
+"name": "attack",
+"speed": 14.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=60]
+height = 33.1818
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 528, 24 )
+
 [sub_resource type="GDScript" id=5]
 script/source = "extends Camera2D
 
@@ -499,14 +653,19 @@ func _ready():
 #	pass
 "
 
-[sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 528, 24 )
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 11 )
 
-[node name="InvulnerabilityTimer" type="Timer" parent="."]
+[node name="PlayerDamageTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
+
+[node name="PlayerHeavyAttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="BatDamageTimer" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -530,14 +689,14 @@ shape = SubResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="Player"]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Player/Area2D"]
+[node name="PlayerSprite" type="AnimatedSprite" parent="Player/Area2D"]
 light_mask = 2
 position = Vector2( -3.75, 0 )
 scale = Vector2( 0.0665894, 0.0665894 )
 frames = SubResource( 4 )
 animation = "idle"
 
-[node name="ProgressBar1" type="ProgressBar" parent="Player/Area2D/AnimatedSprite"]
+[node name="ProgressBar1" type="ProgressBar" parent="Player/Area2D/PlayerSprite"]
 margin_left = -239.018
 margin_top = -502.037
 margin_right = 751.982
@@ -548,6 +707,20 @@ step = 10.0
 value = 100.0
 percent_visible = false
 
+[node name="WandSprite" type="AnimatedSprite" parent="Player/Area2D/PlayerSprite"]
+position = Vector2( -33.7891, 255.297 )
+scale = Vector2( 1.21715, 1.21715 )
+frames = SubResource( 36 )
+animation = "attack"
+offset = Vector2( 175, -160 )
+script = ExtResource( 35 )
+
+[node name="WandArea" type="Area2D" parent="Player/Area2D/PlayerSprite/WandSprite" groups=["player"]]
+position = Vector2( 555.218, -61.6909 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D/PlayerSprite/WandSprite/WandArea"]
+shape = SubResource( 39 )
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Player/Area2D"]
 position = Vector2( -3, 2.5 )
 shape = SubResource( 22 )
@@ -556,12 +729,12 @@ shape = SubResource( 22 )
 position = Vector2( 363, 487 )
 script = ExtResource( 16 )
 
-[node name="Area2D" type="Area2D" parent="Bat"]
+[node name="BatArea" type="Area2D" parent="Bat" groups=["enemies"]]
 
-[node name="CollisionShape2D22" type="CollisionShape2D" parent="Bat/Area2D"]
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="Bat/BatArea"]
 shape = SubResource( 6 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Bat/Area2D"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Bat/BatArea"]
 light_mask = 0
 scale = Vector2( 1.10937, 1.10937 )
 frames = SubResource( 27 )
@@ -569,7 +742,7 @@ animation = "fly"
 frame = 1
 playing = true
 
-[node name="ProgressBar2" type="ProgressBar" parent="Bat/Area2D/AnimatedSprite"]
+[node name="ProgressBar2" type="ProgressBar" parent="Bat/BatArea/AnimatedSprite"]
 margin_left = -13.9719
 margin_top = -21.1831
 margin_right = 45.0281
@@ -582,28 +755,26 @@ percent_visible = false
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Bat"]
 shape = SubResource( 6 )
-one_way_collision = true
 
 [node name="Spider" type="KinematicBody2D" parent="."]
-visible = false
 position = Vector2( 499, 575 )
 script = ExtResource( 18 )
 
-[node name="Area2D" type="Area2D" parent="Spider"]
+[node name="SpiderArea" type="Area2D" parent="Spider" groups=["enemies"]]
 
-[node name="CollisionShape2D22" type="CollisionShape2D" parent="Spider/Area2D"]
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="Spider/SpiderArea"]
 rotation = 1.09258
 shape = SubResource( 34 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Spider/Area2D"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Spider/SpiderArea"]
 position = Vector2( -0.75, -2.2501 )
 scale = Vector2( 1.05468, 1.05468 )
 frames = SubResource( 11 )
 animation = "walk"
-frame = 1
+frame = 5
 playing = true
 
-[node name="ProgressBar2" type="ProgressBar" parent="Spider/Area2D/AnimatedSprite"]
+[node name="ProgressBar2" type="ProgressBar" parent="Spider/SpiderArea/AnimatedSprite"]
 margin_left = -13.9719
 margin_top = -21.1831
 margin_right = 45.0281
@@ -622,12 +793,20 @@ position = Vector2( 0, 16 )
 shape = SubResource( 35 )
 one_way_collision = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 250, 480 )
-scale = Vector2( 0.0665894, 0.0665894 )
-current = true
-zoom = Vector2( 0.7, 0.7 )
-script = SubResource( 5 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 95, 563 )
+frames = SubResource( 59 )
+animation = "attack"
+
+[node name="RootArea" type="Area2D" parent="AnimatedSprite" groups=["player"]]
+position = Vector2( 0, -1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/RootArea"]
+position = Vector2( -8, 9 )
+rotation = 0.546288
+shape = SubResource( 60 )
+disabled = true
 
 [node name="Area2D2" type="StaticBody2D" parent="."]
 position = Vector2( 116, 600 )
@@ -636,5 +815,14 @@ position = Vector2( 116, 600 )
 position = Vector2( 384, 19 )
 shape = SubResource( 15 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 250, 480 )
+scale = Vector2( 0.0665894, 0.0665894 )
+current = true
+zoom = Vector2( 0.7, 0.7 )
+script = SubResource( 5 )
+
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Player/Area2D" to="Player" method="_on_Area2D_area_exited"]
+[connection signal="area_entered" from="Bat/BatArea" to="Bat" method="_on_BatArea_area_entered"]
+[connection signal="area_exited" from="Bat/BatArea" to="Bat" method="_on_BatArea_area_exited"]
