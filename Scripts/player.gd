@@ -13,7 +13,7 @@ const DOUBLE_JUMP_SPEED := 280.0
 export var max_health = 100
 
 onready var health = max_health setget _set_health
-onready var invulnerability_timer = get_node("/root/Node2D/PlayerDamageTimer")
+onready var invulnerability_timer = get_node("/root/Node2D/InvulnerabilityTimer")
 
 var _velocity := Vector2()
 var double_jump = false
@@ -33,12 +33,10 @@ func _physics_process(_delta):
 	if input != 0: 
 		_velocity.x += input * MOVE_ACCEL # Accelerates in the movement direction.
 		
-		$Area2D/PlayerSprite.play("walk")
-		
-		
-		#$Area2D/PlayerSprite.flip_h = input < 0
+		$Area2D/AnimatedSprite.play("walk")
+		$Area2D/AnimatedSprite.flip_h = input < 0
 	else:
-		$Area2D/PlayerSprite.play("idle")
+		$Area2D/AnimatedSprite.play("idle")
 		_velocity.x *= FRIC_MOD # Applies friction.
 	
 	# Clamps the movement speed to a max value.
@@ -74,16 +72,14 @@ func _set_health(value):
 	health = clamp(value, 0, max_health)
 	if health != prev_health:
 		emit_signal("health_updated", health)
-		$Area2D/PlayerSprite/ProgressBar1.value = health
+		$Area2D/AnimatedSprite/ProgressBar1.value = health
 		print("Prev Health ",prev_health)
 		if health == 0:
 			_kill()
 			emit_signal("killed")
 
-func _on_Area2D_area_entered(area):
-	if area.is_in_group("enemies"):
-		touching = true
+func _on_Area2D_area_entered(_area):
+	touching = true
 
-func _on_Area2D_area_exited(area):
-	if area.is_in_group("enemies"):
-		touching = false
+func _on_Area2D_area_exited(_area):
+	touching = false
