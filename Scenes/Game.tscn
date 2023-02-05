@@ -23,7 +23,7 @@
 [ext_resource path="res://Assets/Artwork/greentile2.png" type="Texture" id=21]
 
 [sub_resource type="ConvexPolygonShape2D" id=42]
-points = PoolVector2Array( 16, 16, 0.318405, 16, 0, 0, 16, 0.094101 )
+points = PoolVector2Array( 16, 16, 0.318405, 16, 0, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=43]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -65,7 +65,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=40]
-points = PoolVector2Array( 16, 16, 0.0233536, 16, 0, 0, 16, 0.214325 )
+points = PoolVector2Array( 16, 16, 0.0233536, 16, 0, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=41]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -74,7 +74,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=50]
-points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0.206253 )
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=51]
 points = PoolVector2Array( 16, 16, 0.0940933, 16, 0, 0, 16, 0 )
@@ -565,6 +565,25 @@ ProgressBar/styles/fg = SubResource( 18 )
 [sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 16, 23.5 )
 
+[sub_resource type="GDScript" id=5]
+script/source = "extends Camera2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
 [sub_resource type="CircleShape2D" id=6]
 radius = 15.0
 
@@ -640,25 +659,6 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=35]
 extents = Vector2( 24, 4 )
 
-[sub_resource type="GDScript" id=5]
-script/source = "extends Camera2D
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-"
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 11 )
 
@@ -709,6 +709,13 @@ percent_visible = false
 position = Vector2( -3, 2.5 )
 shape = SubResource( 22 )
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 10, -67 )
+scale = Vector2( 0.0665894, 0.0665894 )
+current = true
+zoom = Vector2( 0.7, 0.7 )
+script = SubResource( 5 )
+
 [node name="Bat" type="KinematicBody2D" parent="."]
 position = Vector2( 2534, 572 )
 script = ExtResource( 16 )
@@ -726,7 +733,7 @@ position = Vector2( 2, 5.99997 )
 scale = Vector2( 1.10937, 1.10937 )
 frames = SubResource( 27 )
 animation = "fly"
-frame = 2
+frame = 1
 playing = true
 
 [node name="ProgressBar2" type="ProgressBar" parent="Bat/Area2D/AnimatedSprite"]
@@ -763,7 +770,7 @@ position = Vector2( -0.75, -2.2501 )
 scale = Vector2( 1.05468, 1.05468 )
 frames = SubResource( 11 )
 animation = "walk"
-frame = 2
+frame = 5
 playing = true
 
 [node name="ProgressBar2" type="ProgressBar" parent="Spider/Area2D/AnimatedSprite"]
@@ -784,13 +791,6 @@ __meta__ = {
 position = Vector2( 0, 16 )
 shape = SubResource( 35 )
 one_way_collision = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 232, 499 )
-scale = Vector2( 0.0665894, 0.0665894 )
-current = true
-zoom = Vector2( 0.7, 0.7 )
-script = SubResource( 5 )
 
 [node name="Area2D2" type="StaticBody2D" parent="."]
 position = Vector2( 116, 600 )
