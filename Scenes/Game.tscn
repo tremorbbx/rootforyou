@@ -771,7 +771,7 @@ position = Vector2( -0.75, -2.2501 )
 scale = Vector2( 1.05468, 1.05468 )
 frames = SubResource( 11 )
 animation = "walk"
-frame = 5
+frame = 1
 playing = true
 
 [node name="ProgressBar2" type="ProgressBar" parent="Spider/Area2D/AnimatedSprite"]
